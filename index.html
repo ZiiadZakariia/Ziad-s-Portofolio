@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ziiad Zakariia — Professional Video Editor</title>
+    
+    <!-- Favicon - صورتك الشخصية -->
+    <link rel="icon" href="https://i.ibb.co/B5rw5RpM/Picsart-24-09-05-06-28-38-296.jpg" type="image/jpeg">
+    
+    <!-- Apple-like, clean, subtle animations -->
+    <style>
+        :root {
+            --bg: #ffffff;
+            --panel: #fafafa;
+            --muted: #6b6b6b;
+            --accent: #0a84ff; /* apple blue */
+            --shadow: 0 6px 20px rgba(16,24,40,0.06);
+            --radius: 14px;
+            --maxw: 1100px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html, body {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #111;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.85);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 14px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .profile-small {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 12px rgba(10,20,40,0.06);
+        }
+
+        .profile-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .logo-title {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #111;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(16,24,40,0.08);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(10,132,255,0.12);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            max-width: var(--maxw);
+            margin: 28px auto 18px;
+            padding: 32px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff, #fbfbfd);
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .profile-big {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+        }
+
+        .profile-big img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin: 0 0 8px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #111, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .hero-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 8px 30px rgba(10,132,255,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(10,132,255,0.2);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(16,24,40,0.1);
+            padding: 12px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(10,132,255,0.05);
+        }
+
+        .hero-meta {
+            margin-left: auto;
+            text-align: right;
+            color: var(--muted);
+        }
+
+        .hero-meta small {
+            display: block;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .hero-meta strong {
+            display: block;
+            font-size: 32px;
+            color: #111;
+            margin: 4px 0;
+        }
+
+        /* INTRO VIDEO SECTION */
+        .intro-section {
+            max-width: var(--maxw);
+            margin: 30px auto;
+            padding: 0 28px;
+        }
+
+        .intro-container {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(16,24,40,0.03);
+        }
+
+        .intro-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .intro-header h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #111;
+        }
+
+        .intro-badge {
+            background: rgba(10,132,255,0.08);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .intro-video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .intro-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* CONTROLS */
+        .controls {
+            max-width: var(--maxw);
+            margin: 35px auto 15px;
+            padding: 0 28px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: transparent;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(10,132,255,0.05);
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(10,132,255,0.1);
+        }
+
+        .filter {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .filter-label {
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .country-btn {
+            background: #fff;
+            border: 1px solid rgba(16,24,40,0.1);
+            padding: 8px 16px;
+            border-radius: 10px;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .country-btn:hover {
+            background: rgba(10,132,255,0.05);
+        }
+
+        .country-btn.active {
+            background: #f1f9ff;
+            border-color: rgba(10,132,255,0.2);
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .country-count {
+            background: rgba(10,132,255,0.1);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* PROJECTS SECTIONS */
+        .section {
+            max-width: var(--maxw);
+            margin: 40px auto;
+            padding: 0 28px;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(16,24,40,0.05);
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #111;
+        }
+
+        .country {
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .country h3 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+            color: #111;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(16,24,40,0.08);
+        }
+
+        /* VIDEOS GRID */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--panel);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+            border: 1px solid rgba(16,24,40,0.03);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+            animation: cardAppear 0.6s ease forwards;
+        }
+
+        @keyframes cardAppear {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 for Shorts */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container.regular {
+            padding-bottom: 56.25%; /* 16:9 for regular videos */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .card .meta {
+            padding: 16px;
+        }
+
+        .meta h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .meta p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .video-type-badge {
+            display: inline-block;
+            background: rgba(10,132,255,0.1);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            max-width: var(--maxw);
+            margin: 50px auto 30px;
+            padding: 30px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fff, #fcfcfd);
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .about h3 {
+            font-size: 24px;
+            margin: 0 0 15px;
+            color: #111;
+        }
+
+        .about p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .soft-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .soft-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 1px solid rgba(16,24,40,0.05);
+            font-weight: 700;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .soft-item::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* AI TOOLS SECTION */
+        .ai-tools {
+            margin-top: 20px;
+        }
+
+        .ai-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .ai-tool {
+            background: #fff;
+            border: 1px solid rgba(10,132,255,0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #111;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer {
+            max-width: var(--maxw);
+            margin: 50px auto 60px;
+            padding: 25px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(16,24,40,0.05);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                padding: 24px;
+            }
+            
+            .hero-left {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .hero-meta {
+                display: none;
+            }
+            
+            .about {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 0 20px;
+            }
+            
+            .tabs {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .section, .intro-section {
+                padding: 0 20px;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+            
+            .nav-right {
+                gap: 6px;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn-primary, .btn-ghost {
+                text-align: center;
+            }
+            
+            .ai-tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="brand">
+            <div class="profile-small">
+                <img src="https://i.ibb.co/B5rw5RpM/Picsart-24-09-05-06-28-38-296.jpg" alt="Ziiad Zakariia">
+            </div>
+            <div class="logo-title">Ziiad Zakariia</div>
+        </div>
+        <div class="nav-right">
+            <a class="nav-btn" href="https://www.instagram.com/ziiadzakariia" target="_blank">Instagram</a>
+            <a class="nav-btn" href="https://wa.me/201222127636" target="_blank">WhatsApp</a>
+            <a class="nav-btn" href="https://www.instagram.com/ziad.editor" target="_blank">Work</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="profile-big">
+                <img src="https://i.ibb.co/B5rw5RpM/Picsart-24-09-05-06-28-38-296.jpg" alt="Ziiad Zakariia">
+            </div>
+            <div class="hero-text">
+                <h1>Ziiad Zakariia</h1>
+                <p>Mid-Level Video Editor • AI Content Creator • Color Specialist</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="https://wa.me/201222127636" target="_blank">📱 Hire / WhatsApp</a>
+                    <a class="btn-ghost" href="https://www.instagram.com/ziad.editor" target="_blank">🎬 Work Account</a>
+                    <a class="btn-ghost" href="#intro-video">▶️ Intro Video</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-meta">
+            <small>Professional Experience</small>
+            <strong>3+ Years</strong>
+            <small>AI Integration • Advanced Color • Creative Direction</small>
+        </div>
+    </section>
+
+    <!-- INTRO VIDEO -->
+    <section class="intro-section" id="intro-video">
+        <div class="intro-container">
+            <div class="intro-header">
+                <h2>Intro Video</h2>
+                <div class="intro-badge">Featured</div>
+            </div>
+            <div class="intro-video-wrapper">
+                <iframe src="https://www.youtube.com/embed/G2c1vJ7V4tM" 
+                        title="Ziiad Zakariia - Introduction" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER CONTROLS -->
+    <div class="controls">
+        <div class="tabs" id="tabs">
+            <!-- Tabs will be generated by JavaScript -->
+        </div>
+        <div class="filter">
+            <div class="filter-label">Country:</div>
+            <div id="countries">
+                <!-- Country buttons will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS SECTIONS -->
+    <main id="content-area">
+        
+        <!-- MEDICAL SECTION -->
+        <section class="section active" data-category="Medical" id="medical-section">
+            <div class="section-title">
+                <h2>Medical</h2>
+            </div>
+            
+            <!-- Egypt Medical -->
+            <div class="country" data-country="Egypt">
+                <h3>Egypt 🇪🇬</h3>
+                <div class="videos-grid" id="medical-egypt">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Iraq Medical -->
+            <div class="country" data-country="Iraq">
+                <h3>Iraq 🇮🇶</h3>
+                <div class="videos-grid" id="medical-iraq">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- UAE Medical -->
+            <div class="country" data-country="UAE">
+                <h3>UAE 🇦🇪</h3>
+                <div class="videos-grid" id="medical-uae">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- BUSINESS SECTION -->
+        <section class="section" data-category="Business" id="business-section">
+            <div class="section-title">
+                <h2>Business</h2>
+            </div>
+            
+            <!-- UAE Business -->
+            <div class="country" data-country="UAE">
+                <h3>UAE 🇦🇪</h3>
+                <div class="videos-grid" id="business-uae">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Saudi Business -->
+            <div class="country" data-country="Saudi">
+                <h3>Saudi Arabia 🇸🇦</h3>
+                <div class="videos-grid" id="business-saudi">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CARS SECTION -->
+        <section class="section" data-category="Cars" id="cars-section">
+            <div class="section-title">
+                <h2>Automotive</h2>
+            </div>
+            
+            <!-- UAE Cars -->
+            <div class="country" data-country="UAE">
+                <h3>UAE 🇦🇪</h3>
+                <div class="videos-grid" id="cars-uae">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- GYM SECTION -->
+        <section class="section" data-category="Gym" id="gym-section">
+            <div class="section-title">
+                <h2>Sports / Gym</h2>
+            </div>
+            
+            <!-- Iraq Gym -->
+            <div class="country" data-country="Iraq">
+                <h3>Iraq 🇮🇶</h3>
+                <div class="videos-grid" id="gym-iraq">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ABOUT SECTION -->
+    <aside class="about">
+        <div>
+            <h3>About Me</h3>
+            <p>
+                Hey, I'm <strong>Ziiad Zakariia</strong>, a <strong>Mid-Level Video Editor</strong> with over 3 years of professional experience in video production and post-production. 
+                I specialize in creating engaging content that tells compelling stories through cinematic visuals and precise editing techniques.
+            </p>
+            <p>
+                I'm passionate about integrating <strong>AI tools</strong> into my workflow to enhance creativity and efficiency. 
+                I'm always eager to learn new technologies and adapt to the latest trends in video editing and content creation.
+            </p>
+            
+            <h4>Professional Services</h4>
+            <ul style="color: var(--muted); margin-top: 10px; line-height: 1.7; padding-left: 20px;">
+                <li><strong>Mid-Level Video Editing</strong> - Advanced editing techniques</li>
+                <li><strong>AI-Enhanced Content</strong> - Using AI tools for better results</li>
+                <li><strong>Professional Color Grading</strong> - DaVinci Resolve expert</li>
+                <li><strong>Motion Graphics & VFX</strong> - Adobe After Effects</li>
+                <li><strong>Social Media Content</strong> - Short-form & platform optimization</li>
+                <li><strong>Project Direction</strong> - From concept to final delivery</li>
+            </ul>
+            
+            <div class="ai-tools">
+                <h4>AI Tools I Use</h4>
+                <div class="ai-tools-grid">
+                    <div class="ai-tool">ChatGPT</div>
+                    <div class="ai-tool">DeepSeek</div>
+                    <div class="ai-tool">Freepik AI</div>
+                    <div class="ai-tool">Envato AI</div>
+                    <div class="ai-tool">Meta AI</div>
+                    <div class="ai-tool">EllevenLabs</div>
+                    <div class="ai-tool">Runway ML</div>
+                    <div class="ai-tool">Auphonic</div>
+                    <div class="ai-tool">Suno AI</div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h4>Professional Software</h4>
+            <div class="soft-list">
+                <div class="soft-item">Adobe Premiere Pro</div>
+                <div class="soft-item">Adobe After Effects</div>
+                <div class="soft-item">DaVinci Resolve</div>
+                <div class="soft-item">Adobe Photoshop</div>
+                <div class="soft-item">CapCut Pro</div>
+            </div>
+            
+            <h4 style="margin-top: 25px;">Why Work With Me?</h4>
+            <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6; padding-left: 18px; font-size: 14px;">
+                <li>Fast learner of new technologies</li>
+                <li>AI integration expert</li>
+                <li>Attention to detail</li>
+                <li>Meeting deadlines consistently</li>
+                <li>Adaptable to any style</li>
+            </ul>
+            
+            <h4 style="margin-top: 25px;">Contact</h4>
+            <p style="color: var(--muted); margin-top: 8px; font-size: 15px;">
+                <strong>WhatsApp:</strong><br>
+                <a href="https://wa.me/201222127636" style="color: var(--accent); text-decoration: none;">+20 122 212 7636</a>
+            </p>
+            <p style="color: var(--muted); margin-top: 10px; font-size: 15px;">
+                <strong>Instagram:</strong><br>
+                <a href="https://www.instagram.com/ziiadzakariia" target="_blank" style="color: var(--accent); text-decoration: none;">@ziiadzakariia</a>
+            </p>
+            <p style="color: var(--muted); margin-top: 10px; font-size: 15px;">
+                <strong>Work Account:</strong><br>
+                <a href="https://www.instagram.com/ziad.editor" target="_blank" style="color: var(--accent); text-decoration: none;">@ziad.editor</a>
+            </p>
+        </div>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Ziiad Zakariia — Professional Video Editor & AI Content Creator<br>
+        <small style="opacity: 0.7; margin-top: 5px; display: block;">Specializing in AI-enhanced video editing • Always learning new technologies</small>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ============================
+        // PORTFOLIO DATA - UPDATED
+        // ============================
+        const PORTFOLIO = {
+            Medical: {
+                Egypt: [
+                    { 
+                        url: "https://www.youtube.com/embed/WxSXwHFijEk", 
+                        title: "Medical Campaign - Egypt", 
+                        type: "short",
+                        desc: "Healthcare promotional campaign"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/bznrrv0OBN8", 
+                        title: "Medical Services - Egypt", 
+                        type: "short",
+                        desc: "Medical services showcase"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/VAYm3eKyldI", 
+                        title: "Healthcare Ad - Egypt", 
+                        type: "short",
+                        desc: "Healthcare advertisement"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/PiEIoATUvn0", 
+                        title: "Medical Promotion - Egypt", 
+                        type: "short",
+                        desc: "Medical facility promotion"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/UMsAJ-ovGRI", 
+                        title: "Health Campaign - Egypt", 
+                        type: "short",
+                        desc: "Health awareness campaign"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/kC7FZ70lDOI", 
+                        title: "Medical Content - Egypt", 
+                        type: "short",
+                        desc: "Healthcare content creation"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/rR5SjmPVJSk", 
+                        title: "Medical Ad Series - Egypt", 
+                        type: "short",
+                        desc: "Healthcare advertisement series"
+                    }
+                ],
+                Iraq: [
+                    { 
+                        url: "https://www.youtube.com/embed/Yzi6TztlVpU", 
+                        title: "Medical Ad - Iraq", 
+                        type: "short",
+                        desc: "Healthcare advertisement"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/LS-5hDp3vEE", 
+                        title: "Medical Promotion - Iraq", 
+                        type: "short",
+                        desc: "Medical services promotion"
+                    }
+                ],
+                UAE: [
+                    { 
+                        url: "https://www.youtube.com/embed/Y8BFtcx7aHU", 
+                        title: "Medical Services - UAE", 
+                        type: "short",
+                        desc: "Medical services presentation"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/8sRhbGNlDzI", 
+                        title: "Medical Facility - UAE", 
+                        type: "short",
+                        desc: "Healthcare facility showcase"
+                    }
+                ]
+            },
+            Business: {
+                UAE: [
+                    { 
+                        url: "https://www.youtube.com/embed/eMImc6bW1DE", 
+                        title: "Business Ad - UAE", 
+                        type: "short",
+                        desc: "Corporate advertisement"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/lcwwIbKpIuk", 
+                        title: "Business Promotion - UAE", 
+                        type: "short",
+                        desc: "Company promotion"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/ePVk4qfDrag", 
+                        title: "Real Estate Ad - UAE", 
+                        type: "regular",
+                        desc: "Real estate commercial"
+                    }
+                ],
+                Saudi: [
+                    { 
+                        url: "https://www.youtube.com/embed/5tuTgVrJMUY", 
+                        title: "Business Campaign - Saudi", 
+                        type: "short",
+                        desc: "Corporate marketing campaign"
+                    }
+                ]
+            },
+            Cars: {
+                UAE: [
+                    { 
+                        url: "https://www.youtube.com/embed/119M9yiCluo", 
+                        title: "Automotive Ad - UAE", 
+                        type: "short",
+                        desc: "Car advertisement"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/vqI-dpFCZ-8", 
+                        title: "Car Showcase - UAE", 
+                        type: "short",
+                        desc: "Automotive showcase"
+                    },
+                    { 
+                        url: "https://www.youtube.com/embed/EoMUC8pLs20", 
+                        title: "Luxury Cars - UAE", 
+                        type: "short",
+                        desc: "Luxury automotive content"
+                    }
+                ]
+            },
+            Gym: {
+                Iraq: [
+                    { 
+                        url: "https://www.youtube.com/embed/xicYUzb1Cok", 
+                        title: "Gym Promotion - Iraq", 
+                        type: "short",
+                        desc: "Fitness center promotion"
+                    }
+                ]
+            }
+        };
+
+        // ============================
+        // HELPER FUNCTIONS
+        // ============================
+        function createVideoCard(video) {
+            const div = document.createElement('div');
+            div.className = 'card';
+            
+            const isShort = video.type === 'short';
+            const aspectClass = isShort ? '' : 'regular';
+            
+            div.innerHTML = `
+                <div class="video-container ${aspectClass}">
+                    <iframe src="${video.url}" 
+                            title="${video.title}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="meta">
+                    <h4>${video.title}</h4>
+                    <p>${video.desc}</p>
+                    <div class="video-type-badge">
+                        ${isShort ? 'YouTube Short' : 'Full Video'}
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        function populateVideos() {
+            // Clear existing content
+            const containers = [
+                'medical-egypt', 'medical-iraq', 'medical-uae',
+                'business-uae', 'business-saudi',
+                'cars-uae',
+                'gym-iraq'
+            ];
+            
+            containers.forEach(id => {
+                const container = document.getElementById(id);
+                if (container) container.innerHTML = '';
+            });
+            
+            // Populate Medical Egypt
+            PORTFOLIO.Medical.Egypt.forEach(video => {
+                const container = document.getElementById('medical-egypt');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Medical Iraq
+            PORTFOLIO.Medical.Iraq.forEach(video => {
+                const container = document.getElementById('medical-iraq');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Medical UAE
+            PORTFOLIO.Medical.UAE.forEach(video => {
+                const container = document.getElementById('medical-uae');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Business UAE
+            PORTFOLIO.Business.UAE.forEach(video => {
+                const container = document.getElementById('business-uae');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Business Saudi
+            PORTFOLIO.Business.Saudi.forEach(video => {
+                const container = document.getElementById('business-saudi');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Cars UAE
+            PORTFOLIO.Cars.UAE.forEach(video => {
+                const container = document.getElementById('cars-uae');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+            
+            // Populate Gym Iraq
+            PORTFOLIO.Gym.Iraq.forEach(video => {
+                const container = document.getElementById('gym-iraq');
+                if (container) container.appendChild(createVideoCard(video));
+            });
+        }
+
+        // ============================
+        // FILTERING SYSTEM
+        // ============================
+        let activeCategory = 'Medical';
+        let activeCountry = 'All';
+
+        function getCountryCount(country) {
+            if (country === 'All') {
+                let total = 0;
+                Object.values(PORTFOLIO).forEach(category => {
+                    Object.values(category).forEach(videos => {
+                        total += videos.length;
+                    });
+                });
+                return total;
+            }
+            
+            let total = 0;
+            if (PORTFOLIO[activeCategory] && PORTFOLIO[activeCategory][country]) {
+                total = PORTFOLIO[activeCategory][country].length;
+            }
+            return total;
+        }
+
+        function buildTabs() {
+            const tabsContainer = document.getElementById('tabs');
+            tabsContainer.innerHTML = '';
+            
+            Object.keys(PORTFOLIO).forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'tab' + (category === activeCategory ? ' active' : '');
+                button.textContent = category;
+                button.onclick = () => {
+                    activeCategory = category;
+                    activeCountry = 'All';
+                    updateActive();
+                    filterView();
+                };
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        function buildCountries() {
+            const countriesContainer = document.getElementById('countries');
+            countriesContainer.innerHTML = '';
+            
+            // Get all countries from current category
+            const countries = ['All'];
+            if (PORTFOLIO[activeCategory]) {
+                countries.push(...Object.keys(PORTFOLIO[activeCategory]));
+            }
+            
+            countries.forEach(country => {
+                const button = document.createElement('button');
+                button.className = 'country-btn' + (country === activeCountry ? ' active' : '');
+                
+                if (country === 'All') {
+                    button.textContent = 'All';
+                } else {
+                    button.innerHTML = country;
+                }
+                
+                const count = getCountryCount(country);
+                if (count > 0) {
+                    button.innerHTML += ` <span class="country-count">${count}</span>`;
+                }
+                
+                button.onclick = () => {
+                    activeCountry = country;
+                    updateActive();
+                    filterView();
+                };
+                
+                countriesContainer.appendChild(button);
+            });
+        }
+
+        function updateActive() {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.toggle('active', tab.textContent === activeCategory);
+            });
+            
+            // Update country buttons
+            document.querySelectorAll('.country-btn').forEach(btn => {
+                const btnText = btn.textContent.replace(/\s*\(\d+\)/, '').trim();
+                btn.classList.toggle('active', btnText === activeCountry);
+            });
+            
+            // Rebuild countries list for new category
+            buildCountries();
+        }
+
+        function filterView() {
+            // Show/Hide sections
+            document.querySelectorAll('.section').forEach(section => {
+                const category = section.getAttribute('data-category');
+                section.classList.toggle('active', category === activeCategory);
+            });
+            
+            // Show/Hide countries within active section
+            document.querySelectorAll('.country').forEach(countryDiv => {
+                const country = countryDiv.getAttribute('data-country');
+                const parentSection = countryDiv.closest('.section');
+                const sectionCategory = parentSection?.getAttribute('data-category');
+                
+                if (sectionCategory !== activeCategory) {
+                    countryDiv.style.display = 'none';
+                    return;
+                }
+                
+                if (activeCountry === 'All' || country === activeCountry) {
+                    countryDiv.style.display = 'block';
+                    // Trigger animation
+                    countryDiv.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    countryDiv.style.display = 'none';
+                }
+            });
+            
+            // Animate cards
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        }
+
+        // ============================
+        // INITIALIZATION
+        // ============================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate videos
+            populateVideos();
+            
+            // Build UI controls
+            buildTabs();
+            buildCountries();
+            
+            // Set initial view
+            filterView();
+            
+            // Scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe cards for animation
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // ============================
+        // UTILITY FUNCTIONS
+        // ============================
+        function addVideo(category, country, url, title, type = 'short') {
+            if (!PORTFOLIO[category]) {
+                PORTFOLIO[category] = {};
+            }
+            if (!PORTFOLIO[category][country]) {
+                PORTFOLIO[category][country] = [];
+            }
+            
+            const newVideo = {
+                url: url,
+                title: title || `${category} Video - ${country}`,
+                type: type,
+                desc: 'Professional video content'
+            };
+            
+            PORTFOLIO[category][country].push(newVideo);
+            populateVideos();
+            updateActive();
+            filterView();
+            
+            alert(`تم إضافة فيديو جديد في ${category} - ${country}`);
+        }
+
+        // Console helper
+        console.log('لإضافة فيديو جديد:');
+        console.log('addVideo("Category", "Country", "YouTubeURL", "Video Title")');
+        console.log('مثال: addVideo("Medical", "Egypt", "https://youtube.com/embed/xxx", "عنوان الفيديو")');
+    </script>
+
+</body>
+</html>
