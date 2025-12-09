@@ -3,61 +3,97 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Ziiad Zakariia — Professional Video Editor</title>
+    <title>Ziiad Zakariia — Video Editor & AI Content Creator</title>
     
     <!-- Favicon - صورتك الشخصية -->
     <link rel="icon" href="https://i.ibb.co/B5rw5RpM/Picsart-24-09-05-06-28-38-296.jpg" type="image/jpeg">
     
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Apple-like, clean, subtle animations -->
     <style>
         :root {
-            --bg: #ffffff;
-            --panel: #fafafa;
-            --muted: #6b6b6b;
-            --accent: #0a84ff; /* apple blue */
-            --shadow: 0 6px 20px rgba(16,24,40,0.06);
-            --radius: 14px;
-            --maxw: 1100px;
+            --bg: #f8fafc;
+            --panel: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --accent: #3b82f6; /* Modern blue */
+            --accent-light: #60a5fa;
+            --accent-dark: #1d4ed8;
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --maxw: 1200px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
         
         html, body {
             height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            color: #111;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
-        /* NAVBAR */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* NAVBAR - Modern & Glass */
         .navbar {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.85);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 14px 6%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 16px 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 5%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
 
         .profile-small {
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid #fff;
-            box-shadow: 0 4px 12px rgba(10,20,40,0.06);
+            border: 3px solid #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-small:hover {
+            transform: scale(1.05);
         }
 
         .profile-small img {
@@ -68,63 +104,97 @@
         }
 
         .logo-title {
-            font-weight: 800;
-            font-size: 18px;
+            font-weight: 700;
+            font-size: 20px;
             letter-spacing: 0.5px;
-            color: #111;
+            color: var(--text);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-right {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
         }
 
         .nav-btn {
             background: transparent;
-            border: 1px solid rgba(16,24,40,0.08);
-            padding: 8px 16px;
-            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--accent);
             text-decoration: none;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn i {
+            font-size: 16px;
         }
 
         .nav-btn:hover {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 6px 20px rgba(10,132,255,0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - Modern & Vibrant */
         .hero {
             max-width: var(--maxw);
-            margin: 28px auto 18px;
-            padding: 32px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #fff, #fbfbfd);
-            box-shadow: var(--shadow);
+            margin: 120px auto 40px;
+            padding: 50px 40px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
             display: flex;
-            gap: 28px;
+            gap: 40px;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient);
+            opacity: 0.03;
+            border-radius: 50%;
+            transform: translate(30%, -30%);
         }
 
         .hero-left {
             display: flex;
-            gap: 24px;
+            gap: 30px;
             align-items: center;
+            flex: 1;
         }
 
         .profile-big {
-            width: 140px;
-            height: 140px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
-            border: 4px solid #fff;
-            box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+            border: 6px solid #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .profile-big img {
@@ -135,123 +205,169 @@
         }
 
         .hero-text h1 {
-            font-size: 36px;
-            margin: 0 0 8px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #111, #333);
+            font-size: 44px;
+            margin: 0 0 12px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero-text p {
             margin: 0;
             color: var(--muted);
-            font-size: 16px;
+            font-size: 18px;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .hero-actions {
-            margin-top: 20px;
+            margin-top: 28px;
             display: flex;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: var(--gradient);
             color: #fff;
-            padding: 12px 22px;
-            border-radius: 12px;
+            padding: 14px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 8px 30px rgba(10,132,255,0.15);
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(10,132,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
         }
 
         .btn-ghost {
             background: transparent;
-            border: 1px solid rgba(16,24,40,0.1);
-            padding: 12px 22px;
-            border-radius: 12px;
+            border: 2px solid var(--accent-light);
+            padding: 14px 28px;
+            border-radius: 30px;
             text-decoration: none;
             color: var(--accent);
-            font-weight: 700;
-            font-size: 15px;
+            font-weight: 600;
+            font-size: 16px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-ghost:hover {
-            background: rgba(10,132,255,0.05);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-3px);
         }
 
         .hero-meta {
             margin-left: auto;
-            text-align: right;
+            text-align: center;
+            padding: 25px;
+            background: var(--panel);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            min-width: 180px;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-meta .number {
+            display: block;
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .hero-meta .label {
+            display: block;
+            font-size: 14px;
             color: var(--muted);
-        }
-
-        .hero-meta small {
-            display: block;
-            font-size: 13px;
-            opacity: 0.8;
-        }
-
-        .hero-meta strong {
-            display: block;
-            font-size: 32px;
-            color: #111;
-            margin: 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         /* INTRO VIDEO SECTION */
         .intro-section {
             max-width: var(--maxw);
-            margin: 30px auto;
-            padding: 0 28px;
+            margin: 50px auto;
+            padding: 0 40px;
+            animation: fadeInUp 0.8s ease;
         }
 
         .intro-container {
             background: var(--panel);
             border-radius: var(--radius);
-            padding: 24px;
+            padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(16,24,40,0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
         }
 
         .intro-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .intro-header h2 {
             margin: 0;
-            font-size: 22px;
-            color: #111;
+            font-size: 26px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .intro-header h2 i {
+            color: var(--accent);
         }
 
         .intro-badge {
-            background: rgba(10,132,255,0.08);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
+            background: var(--gradient);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
             font-weight: 700;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
         }
 
         .intro-video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 12px;
             background: #000;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .intro-video-wrapper iframe {
@@ -263,88 +379,191 @@
             border: 0;
         }
 
-        /* CONTROLS */
+        /* SERVICES SECTION - New from Smart Code */
+        .services-section {
+            max-width: var(--maxw);
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .services-header p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--panel);
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* CONTROLS - Modern */
         .controls {
             max-width: var(--maxw);
-            margin: 35px auto 15px;
-            padding: 0 28px;
+            margin: 40px auto 20px;
+            padding: 0 40px;
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: center;
             justify-content: space-between;
+            animation: fadeInUp 0.8s ease;
         }
 
         .tabs {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .tab {
             background: transparent;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
             cursor: pointer;
             color: var(--muted);
-            font-size: 14px;
+            font-size: 15px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab i {
+            font-size: 16px;
         }
 
         .tab:hover {
-            background: rgba(10,132,255,0.05);
+            background: rgba(59, 130, 246, 0.05);
+            color: var(--accent);
         }
 
         .tab.active {
-            background: var(--accent);
+            background: var(--gradient);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(10,132,255,0.1);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
         }
 
         .filter {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             align-items: center;
         }
 
         .filter-label {
             color: var(--muted);
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 600;
+            font-size: 15px;
         }
 
         .country-btn {
             background: #fff;
-            border: 1px solid rgba(16,24,40,0.1);
-            padding: 8px 16px;
-            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
             color: var(--muted);
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .country-btn:hover {
-            background: rgba(10,132,255,0.05);
+            background: rgba(59, 130, 246, 0.05);
+            color: var(--accent);
         }
 
         .country-btn.active {
             background: #f1f9ff;
-            border-color: rgba(10,132,255,0.2);
+            border-color: var(--accent-light);
             color: var(--accent);
             font-weight: 700;
         }
 
         .country-count {
-            background: rgba(10,132,255,0.1);
-            color: var(--accent);
-            padding: 2px 8px;
-            border-radius: 10px;
+            background: var(--accent);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
         }
@@ -352,56 +571,77 @@
         /* PROJECTS SECTIONS */
         .section {
             max-width: var(--maxw);
-            margin: 40px auto;
-            padding: 0 28px;
+            margin: 50px auto;
+            padding: 0 40px;
             display: none;
+            animation: fadeIn 0.8s ease;
         }
 
         .section.active {
             display: block;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .section-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(16,24,40,0.05);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
         }
 
         .section-title h2 {
             margin: 0;
-            font-size: 24px;
-            color: #111;
+            font-size: 28px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title h2 i {
+            color: var(--accent);
         }
 
         .country {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             animation: fadeIn 0.5s ease;
         }
 
         .country h3 {
-            margin: 0 0 15px 0;
-            font-size: 20px;
-            color: #111;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(16,24,40,0.08);
+            margin: 0 0 20px 0;
+            font-size: 22px;
+            color: var(--text);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* VIDEOS GRID */
         .videos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: var(--panel);
-            border-radius: 12px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(16,24,40,0.04);
-            border: 1px solid rgba(16,24,40,0.03);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
             transform: translateY(20px);
             opacity: 0;
             transition: all 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
@@ -417,14 +657,14 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 177.77%; /* 9:16 for Shorts */
+            padding-bottom: 177.77%;
             height: 0;
             overflow: hidden;
             background: #000;
         }
 
         .video-container.regular {
-            padding-bottom: 56.25%; /* 16:9 for regular videos */
+            padding-bottom: 56.25%;
         }
 
         .video-container iframe {
@@ -437,147 +677,253 @@
         }
 
         .card .meta {
-            padding: 16px;
+            padding: 22px;
         }
 
         .meta h4 {
             margin: 0;
-            font-size: 16px;
-            color: #111;
-            font-weight: 700;
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .meta p {
-            margin: 8px 0 0;
+            margin: 0 0 12px;
             color: var(--muted);
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1.5;
         }
 
         .video-type-badge {
-            display: inline-block;
-            background: rgba(10,132,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
             color: var(--accent);
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-top: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* AI TOOLS SECTION */
+        .ai-section {
+            max-width: var(--maxw);
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .ai-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .ai-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-header p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .ai-tool {
+            background: var(--panel);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            padding: 20px 15px;
+            border-radius: 12px;
+            font-size: 15px;
+            color: var(--text);
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .ai-tool:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-light);
         }
 
         /* ABOUT SECTION */
         .about {
             max-width: var(--maxw);
-            margin: 50px auto 30px;
-            padding: 30px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #fff, #fcfcfd);
-            box-shadow: var(--shadow);
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
             display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
             align-items: start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient);
+            opacity: 0.03;
+            border-radius: 50%;
+            transform: translate(30%, 30%);
         }
 
         .about h3 {
-            font-size: 24px;
-            margin: 0 0 15px;
-            color: #111;
+            font-size: 28px;
+            margin: 0 0 20px;
+            color: var(--text);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .about p {
             color: var(--muted);
             line-height: 1.7;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
 
         .soft-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .soft-item {
-            background: #fff;
+            background: var(--panel);
             border-radius: 12px;
-            padding: 12px 16px;
-            border: 1px solid rgba(16,24,40,0.05);
-            font-weight: 700;
-            color: #111;
+            padding: 16px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            color: var(--text);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .soft-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-light);
+            box-shadow: var(--shadow);
         }
 
         .soft-item::before {
             content: "✓";
             color: var(--accent);
             font-weight: 800;
-        }
-
-        /* AI TOOLS SECTION */
-        .ai-tools {
-            margin-top: 20px;
-        }
-
-        .ai-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .ai-tool {
-            background: #fff;
-            border: 1px solid rgba(10,132,255,0.1);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #111;
-            text-align: center;
-            font-weight: 600;
+            font-size: 18px;
         }
 
         /* FOOTER */
         footer {
             max-width: var(--maxw);
-            margin: 50px auto 60px;
-            padding: 25px;
+            margin: 80px auto 40px;
+            padding: 40px;
             text-align: center;
             color: var(--muted);
-            font-size: 14px;
-            border-top: 1px solid rgba(16,24,40,0.05);
+            font-size: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* ANIMATIONS */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
         }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .hero {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 24px;
-                padding: 24px;
+                text-align: center;
+                padding: 40px 30px;
             }
             
             .hero-left {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
+                gap: 30px;
             }
             
             .hero-meta {
-                display: none;
+                margin: 30px auto 0;
             }
             
             .about {
                 grid-template-columns: 1fr;
-                padding: 20px;
+                padding: 30px;
+            }
+            
+            .services-grid,
+            .ai-tools-grid,
+            .videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+            
+            .logo-title {
+                font-size: 18px;
+            }
+            
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .hero {
+                margin-top: 100px;
+                padding: 30px 20px;
+            }
+            
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            
+            .hero-text p {
+                font-size: 16px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
             }
             
             .controls {
@@ -593,7 +939,10 @@
                 padding-bottom: 10px;
             }
             
-            .section, .intro-section {
+            .section, 
+            .intro-section,
+            .services-section,
+            .ai-section {
                 padding: 0 20px;
             }
             
@@ -602,39 +951,38 @@
             }
             
             .ai-tools-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
             }
         }
 
         @media (max-width: 480px) {
-            .navbar {
-                padding: 12px 20px;
-            }
-            
-            .nav-right {
-                gap: 6px;
-            }
-            
-            .nav-btn {
-                padding: 6px 12px;
-                font-size: 13px;
+            .profile-big {
+                width: 150px;
+                height: 150px;
             }
             
             .hero-text h1 {
                 font-size: 28px;
             }
             
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .btn-primary, .btn-ghost {
-                text-align: center;
+            .service-card {
+                padding: 25px 20px;
             }
             
             .ai-tools-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-primary,
+            .btn-ghost {
+                padding: 12px 20px;
+                font-size: 15px;
+                justify-content: center;
             }
         }
     </style>
@@ -642,7 +990,7 @@
 <body>
 
     <!-- NAVIGATION -->
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="brand">
             <div class="profile-small">
                 <img src="https://i.ibb.co/B5rw5RpM/Picsart-24-09-05-06-28-38-296.jpg" alt="Ziiad Zakariia">
@@ -650,9 +998,15 @@
             <div class="logo-title">Ziiad Zakariia</div>
         </div>
         <div class="nav-right">
-            <a class="nav-btn" href="https://www.instagram.com/ziiadzakariia" target="_blank">Instagram</a>
-            <a class="nav-btn" href="https://wa.me/201222127636" target="_blank">WhatsApp</a>
-            <a class="nav-btn" href="https://www.instagram.com/ziad.editor" target="_blank">Work</a>
+            <a class="nav-btn" href="https://www.instagram.com/ziiadzakariia" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a class="nav-btn" href="https://wa.me/201222127636" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a class="nav-btn" href="https://www.instagram.com/ziad.editor" target="_blank">
+                <i class="fas fa-briefcase"></i> Work
+            </a>
         </div>
     </header>
 
@@ -664,18 +1018,64 @@
             </div>
             <div class="hero-text">
                 <h1>Ziiad Zakariia</h1>
-                <p>Mid-Level Video Editor • AI Content Creator • Color Specialist</p>
+                <p>Mid-Level Video Editor • AI Content Creator • Professional Color Grading Specialist</p>
                 <div class="hero-actions">
-                    <a class="btn-primary" href="https://wa.me/201222127636" target="_blank">📱 Hire / WhatsApp</a>
-                    <a class="btn-ghost" href="https://www.instagram.com/ziad.editor" target="_blank">🎬 Work Account</a>
-                    <a class="btn-ghost" href="#intro-video">▶️ Intro Video</a>
+                    <a class="btn-primary" href="https://wa.me/201222127636" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Hire / WhatsApp
+                    </a>
+                    <a class="btn-ghost" href="https://www.instagram.com/ziad.editor" target="_blank">
+                        <i class="fas fa-briefcase"></i> Work Account
+                    </a>
+                    <a class="btn-ghost" href="#intro-video">
+                        <i class="fas fa-play-circle"></i> Intro Video
+                    </a>
                 </div>
             </div>
         </div>
         <div class="hero-meta">
-            <small>Professional Experience</small>
-            <strong>3+ Years</strong>
-            <small>AI Integration • Advanced Color • Creative Direction</small>
+            <span class="number">3+</span>
+            <span class="label">Years Experience</span>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section">
+        <div class="services-header">
+            <h2>My Professional Services</h2>
+            <p>Delivering high-quality video content with modern techniques and AI integration</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Video Editing</h3>
+                <p>Professional editing with storytelling focus, using Adobe Premiere Pro and AI tools for enhanced results.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Color Grading</h3>
+                <p>Expert color correction and grading using DaVinci Resolve, creating cinematic looks for your videos.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Integration</h3>
+                <p>Incorporating AI tools like Runway ML and ChatGPT to enhance creativity and production efficiency.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Motion Graphics</h3>
+                <p>Creating engaging motion graphics and visual effects using Adobe After Effects for dynamic content.</p>
+            </div>
         </div>
     </section>
 
@@ -683,7 +1083,7 @@
     <section class="intro-section" id="intro-video">
         <div class="intro-container">
             <div class="intro-header">
-                <h2>Intro Video</h2>
+                <h2><i class="fas fa-play-circle"></i> Intro Video</h2>
                 <div class="intro-badge">Featured</div>
             </div>
             <div class="intro-video-wrapper">
@@ -702,7 +1102,7 @@
             <!-- Tabs will be generated by JavaScript -->
         </div>
         <div class="filter">
-            <div class="filter-label">Country:</div>
+            <div class="filter-label">Filter by Country:</div>
             <div id="countries">
                 <!-- Country buttons will be generated by JavaScript -->
             </div>
@@ -715,12 +1115,12 @@
         <!-- MEDICAL SECTION -->
         <section class="section active" data-category="Medical" id="medical-section">
             <div class="section-title">
-                <h2>Medical</h2>
+                <h2><i class="fas fa-heartbeat"></i> Medical Projects</h2>
             </div>
             
             <!-- Egypt Medical -->
             <div class="country" data-country="Egypt">
-                <h3>Egypt 🇪🇬</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> Egypt 🇪🇬</h3>
                 <div class="videos-grid" id="medical-egypt">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -728,7 +1128,7 @@
             
             <!-- Iraq Medical -->
             <div class="country" data-country="Iraq">
-                <h3>Iraq 🇮🇶</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> Iraq 🇮🇶</h3>
                 <div class="videos-grid" id="medical-iraq">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -736,7 +1136,7 @@
             
             <!-- UAE Medical -->
             <div class="country" data-country="UAE">
-                <h3>UAE 🇦🇪</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> UAE 🇦🇪</h3>
                 <div class="videos-grid" id="medical-uae">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -746,12 +1146,12 @@
         <!-- BUSINESS SECTION -->
         <section class="section" data-category="Business" id="business-section">
             <div class="section-title">
-                <h2>Business</h2>
+                <h2><i class="fas fa-briefcase"></i> Business Projects</h2>
             </div>
             
             <!-- UAE Business -->
             <div class="country" data-country="UAE">
-                <h3>UAE 🇦🇪</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> UAE 🇦🇪</h3>
                 <div class="videos-grid" id="business-uae">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -759,7 +1159,7 @@
             
             <!-- Saudi Business -->
             <div class="country" data-country="Saudi">
-                <h3>Saudi Arabia 🇸🇦</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> Saudi Arabia 🇸🇦</h3>
                 <div class="videos-grid" id="business-saudi">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -769,12 +1169,12 @@
         <!-- CARS SECTION -->
         <section class="section" data-category="Cars" id="cars-section">
             <div class="section-title">
-                <h2>Automotive</h2>
+                <h2><i class="fas fa-car"></i> Automotive Projects</h2>
             </div>
             
             <!-- UAE Cars -->
             <div class="country" data-country="UAE">
-                <h3>UAE 🇦🇪</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> UAE 🇦🇪</h3>
                 <div class="videos-grid" id="cars-uae">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -784,12 +1184,12 @@
         <!-- GYM SECTION -->
         <section class="section" data-category="Gym" id="gym-section">
             <div class="section-title">
-                <h2>Sports / Gym</h2>
+                <h2><i class="fas fa-dumbbell"></i> Sports / Gym Projects</h2>
             </div>
             
             <!-- Iraq Gym -->
             <div class="country" data-country="Iraq">
-                <h3>Iraq 🇮🇶</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> Iraq 🇮🇶</h3>
                 <div class="videos-grid" id="gym-iraq">
                     <!-- Videos will be loaded here -->
                 </div>
@@ -797,6 +1197,26 @@
         </section>
 
     </main>
+
+    <!-- AI TOOLS SECTION -->
+    <section class="ai-section">
+        <div class="ai-header">
+            <h2>AI Tools I Use</h2>
+            <p>Integrating artificial intelligence to enhance creativity and production efficiency</p>
+        </div>
+        <div class="ai-tools-grid">
+            <div class="ai-tool">ChatGPT</div>
+            <div class="ai-tool">DeepSeek</div>
+            <div class="ai-tool">Freepik AI</div>
+            <div class="ai-tool">Envato AI</div>
+            <div class="ai-tool">Meta AI</div>
+            <div class="ai-tool">ElevenLabs</div>
+            <div class="ai-tool">Runway ML</div>
+            <div class="ai-tool">Auphonic</div>
+            <div class="ai-tool">Suno AI</div>
+            <div class="ai-tool">CapCut AI</div>
+        </div>
+    </section>
 
     <!-- ABOUT SECTION -->
     <aside class="about">
@@ -811,71 +1231,60 @@
                 I'm always eager to learn new technologies and adapt to the latest trends in video editing and content creation.
             </p>
             
-            <h4>Professional Services</h4>
-            <ul style="color: var(--muted); margin-top: 10px; line-height: 1.7; padding-left: 20px;">
-                <li><strong>Mid-Level Video Editing</strong> - Advanced editing techniques</li>
-                <li><strong>AI-Enhanced Content</strong> - Using AI tools for better results</li>
-                <li><strong>Professional Color Grading</strong> - DaVinci Resolve expert</li>
-                <li><strong>Motion Graphics & VFX</strong> - Adobe After Effects</li>
-                <li><strong>Social Media Content</strong> - Short-form & platform optimization</li>
-                <li><strong>Project Direction</strong> - From concept to final delivery</li>
-            </ul>
-            
-            <div class="ai-tools">
-                <h4>AI Tools I Use</h4>
-                <div class="ai-tools-grid">
-                    <div class="ai-tool">ChatGPT</div>
-                    <div class="ai-tool">DeepSeek</div>
-                    <div class="ai-tool">Freepik AI</div>
-                    <div class="ai-tool">Envato AI</div>
-                    <div class="ai-tool">Meta AI</div>
-                    <div class="ai-tool">EllevenLabs</div>
-                    <div class="ai-tool">Runway ML</div>
-                    <div class="ai-tool">Auphonic</div>
-                    <div class="ai-tool">Suno AI</div>
-                </div>
+            <h4>Professional Skills</h4>
+            <div class="soft-list">
+                <div class="soft-item">Adobe Premiere Pro Expert</div>
+                <div class="soft-item">DaVinci Resolve Color Grading</div>
+                <div class="soft-item">Adobe After Effects VFX</div>
+                <div class="soft-item">AI Video Enhancement</div>
+                <div class="soft-item">Social Media Optimization</div>
+                <div class="soft-item">Creative Storytelling</div>
             </div>
         </div>
         
         <div>
-            <h4>Professional Software</h4>
-            <div class="soft-list">
-                <div class="soft-item">Adobe Premiere Pro</div>
-                <div class="soft-item">Adobe After Effects</div>
-                <div class="soft-item">DaVinci Resolve</div>
-                <div class="soft-item">Adobe Photoshop</div>
-                <div class="soft-item">CapCut Pro</div>
-            </div>
-            
-            <h4 style="margin-top: 25px;">Why Work With Me?</h4>
-            <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6; padding-left: 18px; font-size: 14px;">
+            <h4>Why Work With Me?</h4>
+            <ul style="color: var(--muted); margin-top: 10px; line-height: 1.6; padding-left: 18px; font-size: 16px;">
                 <li>Fast learner of new technologies</li>
                 <li>AI integration expert</li>
                 <li>Attention to detail</li>
                 <li>Meeting deadlines consistently</li>
                 <li>Adaptable to any style</li>
+                <li>Professional communication</li>
             </ul>
             
-            <h4 style="margin-top: 25px;">Contact</h4>
-            <p style="color: var(--muted); margin-top: 8px; font-size: 15px;">
-                <strong>WhatsApp:</strong><br>
-                <a href="https://wa.me/201222127636" style="color: var(--accent); text-decoration: none;">+20 122 212 7636</a>
-            </p>
-            <p style="color: var(--muted); margin-top: 10px; font-size: 15px;">
-                <strong>Instagram:</strong><br>
-                <a href="https://www.instagram.com/ziiadzakariia" target="_blank" style="color: var(--accent); text-decoration: none;">@ziiadzakariia</a>
-            </p>
-            <p style="color: var(--muted); margin-top: 10px; font-size: 15px;">
-                <strong>Work Account:</strong><br>
-                <a href="https://www.instagram.com/ziad.editor" target="_blank" style="color: var(--accent); text-decoration: none;">@ziad.editor</a>
-            </p>
+            <h4 style="margin-top: 25px;">Contact Information</h4>
+            <div style="margin-top: 15px;">
+                <p style="color: var(--muted); margin-bottom: 10px; font-size: 16px;">
+                    <i class="fab fa-whatsapp" style="color: var(--accent); margin-right: 10px;"></i>
+                    <strong>WhatsApp:</strong><br>
+                    <a href="https://wa.me/201222127636" style="color: var(--accent); text-decoration: none;">+20 122 212 7636</a>
+                </p>
+                <p style="color: var(--muted); margin-bottom: 10px; font-size: 16px;">
+                    <i class="fab fa-instagram" style="color: var(--accent); margin-right: 10px;"></i>
+                    <strong>Instagram:</strong><br>
+                    <a href="https://www.instagram.com/ziiadzakariia" target="_blank" style="color: var(--accent); text-decoration: none;">@ziiadzakariia</a>
+                </p>
+                <p style="color: var(--muted); margin-bottom: 10px; font-size: 16px;">
+                    <i class="fas fa-briefcase" style="color: var(--accent); margin-right: 10px;"></i>
+                    <strong>Work Account:</strong><br>
+                    <a href="https://www.instagram.com/ziad.editor" target="_blank" style="color: var(--accent); text-decoration: none;">@ziad.editor</a>
+                </p>
+            </div>
         </div>
     </aside>
 
     <!-- FOOTER -->
     <footer>
+        <div class="footer-links">
+            <a href="#intro-video" class="footer-link">Intro Video</a>
+            <a href="#content-area" class="footer-link">Portfolio</a>
+            <a href="https://wa.me/201222127636" class="footer-link">Contact</a>
+        </div>
         © 2025 Ziiad Zakariia — Professional Video Editor & AI Content Creator<br>
-        <small style="opacity: 0.7; margin-top: 5px; display: block;">Specializing in AI-enhanced video editing • Always learning new technologies</small>
+        <small style="opacity: 0.7; margin-top: 10px; display: block;">
+            Specializing in AI-enhanced video editing • Always learning new technologies
+        </small>
     </footer>
 
     <!-- JAVASCRIPT -->
@@ -1044,6 +1453,7 @@
                     <h4>${video.title}</h4>
                     <p>${video.desc}</p>
                     <div class="video-type-badge">
+                        <i class="fab fa-youtube"></i>
                         ${isShort ? 'YouTube Short' : 'Full Video'}
                     </div>
                 </div>
@@ -1137,190 +1547,16 @@
             const tabsContainer = document.getElementById('tabs');
             tabsContainer.innerHTML = '';
             
+            const tabIcons = {
+                'Medical': 'fas fa-heartbeat',
+                'Business': 'fas fa-briefcase',
+                'Cars': 'fas fa-car',
+                'Gym': 'fas fa-dumbbell'
+            };
+            
             Object.keys(PORTFOLIO).forEach(category => {
                 const button = document.createElement('button');
                 button.className = 'tab' + (category === activeCategory ? ' active' : '');
-                button.textContent = category;
+                button.innerHTML = `<i class="${tabIcons[category] || 'fas fa-folder'}"></i> ${category}`;
                 button.onclick = () => {
-                    activeCategory = category;
-                    activeCountry = 'All';
-                    updateActive();
-                    filterView();
-                };
-                tabsContainer.appendChild(button);
-            });
-        }
-
-        function buildCountries() {
-            const countriesContainer = document.getElementById('countries');
-            countriesContainer.innerHTML = '';
-            
-            // Get all countries from current category
-            const countries = ['All'];
-            if (PORTFOLIO[activeCategory]) {
-                countries.push(...Object.keys(PORTFOLIO[activeCategory]));
-            }
-            
-            countries.forEach(country => {
-                const button = document.createElement('button');
-                button.className = 'country-btn' + (country === activeCountry ? ' active' : '');
-                
-                if (country === 'All') {
-                    button.textContent = 'All';
-                } else {
-                    button.innerHTML = country;
-                }
-                
-                const count = getCountryCount(country);
-                if (count > 0) {
-                    button.innerHTML += ` <span class="country-count">${count}</span>`;
-                }
-                
-                button.onclick = () => {
-                    activeCountry = country;
-                    updateActive();
-                    filterView();
-                };
-                
-                countriesContainer.appendChild(button);
-            });
-        }
-
-        function updateActive() {
-            // Update tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.toggle('active', tab.textContent === activeCategory);
-            });
-            
-            // Update country buttons
-            document.querySelectorAll('.country-btn').forEach(btn => {
-                const btnText = btn.textContent.replace(/\s*\(\d+\)/, '').trim();
-                btn.classList.toggle('active', btnText === activeCountry);
-            });
-            
-            // Rebuild countries list for new category
-            buildCountries();
-        }
-
-        function filterView() {
-            // Show/Hide sections
-            document.querySelectorAll('.section').forEach(section => {
-                const category = section.getAttribute('data-category');
-                section.classList.toggle('active', category === activeCategory);
-            });
-            
-            // Show/Hide countries within active section
-            document.querySelectorAll('.country').forEach(countryDiv => {
-                const country = countryDiv.getAttribute('data-country');
-                const parentSection = countryDiv.closest('.section');
-                const sectionCategory = parentSection?.getAttribute('data-category');
-                
-                if (sectionCategory !== activeCategory) {
-                    countryDiv.style.display = 'none';
-                    return;
-                }
-                
-                if (activeCountry === 'All' || country === activeCountry) {
-                    countryDiv.style.display = 'block';
-                    // Trigger animation
-                    countryDiv.style.animation = 'fadeIn 0.5s ease';
-                } else {
-                    countryDiv.style.display = 'none';
-                }
-            });
-            
-            // Animate cards
-            setTimeout(() => {
-                document.querySelectorAll('.card').forEach((card, index) => {
-                    card.style.animationDelay = `${index * 0.1}s`;
-                });
-            }, 100);
-        }
-
-        // ============================
-        // INITIALIZATION
-        // ============================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Populate videos
-            populateVideos();
-            
-            // Build UI controls
-            buildTabs();
-            buildCountries();
-            
-            // Set initial view
-            filterView();
-            
-            // Scroll animations
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe cards for animation
-            document.querySelectorAll('.card').forEach(card => {
-                observer.observe(card);
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-
-        // ============================
-        // UTILITY FUNCTIONS
-        // ============================
-        function addVideo(category, country, url, title, type = 'short') {
-            if (!PORTFOLIO[category]) {
-                PORTFOLIO[category] = {};
-            }
-            if (!PORTFOLIO[category][country]) {
-                PORTFOLIO[category][country] = [];
-            }
-            
-            const newVideo = {
-                url: url,
-                title: title || `${category} Video - ${country}`,
-                type: type,
-                desc: 'Professional video content'
-            };
-            
-            PORTFOLIO[category][country].push(newVideo);
-            populateVideos();
-            updateActive();
-            filterView();
-            
-            alert(`تم إضافة فيديو جديد في ${category} - ${country}`);
-        }
-
-        // Console helper
-        console.log('لإضافة فيديو جديد:');
-        console.log('addVideo("Category", "Country", "YouTubeURL", "Video Title")');
-        console.log('مثال: addVideo("Medical", "Egypt", "https://youtube.com/embed/xxx", "عنوان الفيديو")');
-    </script>
-
-</body>
-</html>
+             
