@@ -1559,4 +1559,207 @@
                 button.className = 'tab' + (category === activeCategory ? ' active' : '');
                 button.innerHTML = `<i class="${tabIcons[category] || 'fas fa-folder'}"></i> ${category}`;
                 button.onclick = () => {
-             
+                    activeCategory = category;
+                    activeCountry = 'All';
+                    updateActive();
+                    filterView();
+                    // Scroll to section
+                    document.getElementById(`${category.toLowerCase()}-section`).scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                };
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        function buildCountries() {
+            const countriesContainer = document.getElementById('countries');
+            countriesContainer.innerHTML = '';
+            
+            // Get all countries from current category
+            const countries = ['All'];
+            if (PORTFOLIO[activeCategory]) {
+                countries.push(...Object.keys(PORTFOLIO[activeCategory]));
+            }
+            
+            const countryFlags = {
+                'Egypt': '🇪🇬',
+                'Iraq': '🇮🇶',
+                'UAE': '🇦🇪',
+                'Saudi': '🇸🇦'
+            };
+            
+            countries.forEach(country => {
+                const button = document.createElement('button');
+                button.className = 'country-btn' + (country === activeCountry ? ' active' : '');
+                
+                if (country === 'All') {
+                    button.innerHTML = `<i class="fas fa-globe"></i> All`;
+                } else {
+                    button.innerHTML = `${countryFlags[country] || ''} ${country}`;
+                }
+                
+                const count = getCountryCount(country);
+                if (count > 0) {
+                    button.innerHTML += ` <span class="country-count">${count}</span>`;
+                }
+                
+                button.onclick = () => {
+                    activeCountry = country;
+                    updateActive();
+                    filterView();
+                };
+                
+                countriesContainer.appendChild(button);
+            });
+        }
+
+        function updateActive() {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.toggle('active', tab.textContent.includes(activeCategory));
+            });
+            
+            // Update country buttons
+            document.querySelectorAll('.country-btn').forEach(btn => {
+                const btnText = btn.textContent.replace(/\s*\(\d+\)/, '').replace(/[🇪🇬🇮🇶🇦🇪🇸🇦]/g, '').trim();
+                btn.classList.toggle('active', btnText === activeCountry || (activeCountry === 'All' && btnText === 'All'));
+            });
+            
+            // Rebuild countries list for new category
+            buildCountries();
+        }
+
+        function filterView() {
+            // Show/Hide sections
+            document.querySelectorAll('.section').forEach(section => {
+                const category = section.getAttribute('data-category');
+                section.classList.toggle('active', category === activeCategory);
+            });
+            
+            // Show/Hide countries within active section
+            document.querySelectorAll('.country').forEach(countryDiv => {
+                const country = countryDiv.getAttribute('data-country');
+                const parentSection = countryDiv.closest('.section');
+                const sectionCategory = parentSection?.getAttribute('data-category');
+                
+                if (sectionCategory !== activeCategory) {
+                    countryDiv.style.display = 'none';
+                    return;
+                }
+                
+                if (activeCountry === 'All' || country === activeCountry) {
+                    countryDiv.style.display = 'block';
+                    // Trigger animation
+                    countryDiv.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    countryDiv.style.display = 'none';
+                }
+            });
+            
+            // Animate cards
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        }
+
+        // ============================
+        // INITIALIZATION
+        // ============================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate videos
+            populateVideos();
+            
+            // Build UI controls
+            buildTabs();
+            buildCountries();
+            
+            // Set initial view
+            filterView();
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.card, .service-card, .ai-tool').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // ============================
+        // UTILITY FUNCTIONS
+        // ============================
+        function addVideo(category, country, url, title, type = 'short') {
+            if (!PORTFOLIO[category]) {
+                PORTFOLIO[category] = {};
+            }
+            if (!PORTFOLIO[category][country]) {
+                PORTFOLIO[category][country] = [];
+            }
+            
+            const newVideo = {
+                url: url,
+                title: title || `${category} Video - ${country}`,
+                type: type,
+                desc: 'Professional video content'
+            };
+            
+            PORTFOLIO[category][country].push(newVideo);
+            populateVideos();
+            updateActive();
+            filterView();
+            
+            alert(`تم إضافة فيديو جديد في ${category} - ${country}`);
+        }
+
+        // Console helper
+        console.log('لإضافة فيديو جديد:');
+        console.log('addVideo("Category", "Country", "YouTubeURL", "Video Title")');
+        console.log('مثال: addVideo("Medical", "Egypt", "https://youtube.com/embed/xxx", "عنوان الفيديو")');
+    </script>
+
+</body>
+</html>
